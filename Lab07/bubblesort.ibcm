@@ -1,0 +1,86 @@
+C00B 00		jmp 	start 	skip around the variables
+0005 01	max 	dw 	5 	int max
+00FF 02 array	dw	FF	int[] array
+0000 03 index	dw	0	int index
+0000 04 zero	dw	0	zero
+0001 05 one	dw	1	one
+4000 06 storeit	dw	4000
+0000 07	temp	dw	0	
+3000 08	loadit	dw	3000	
+0000 09 index2	dw	0	int index2
+0000 0A	temp2	dw	0
+3001 0B start	load	max	if(index >= max) sort array
+6003 0C		sub	index
+E01B 0D		jmpl	sort
+D01B 0E		jmpe	sort
+1000 0F		readH		else fill array[index]
+4007 10		store	temp
+3006 11		load	storeit
+5002 12		add	array
+5003 13		add	index
+4016 14		store	storeit plant instruction into program
+3007 15		load	temp
+0000 16		dw	0
+3003 17	iterate	load	index
+5005 18		add	one
+4003 19		store	index
+C00B 1A		jmp	start
+3004 1B	sort	load	zero
+4003 1C		store	index
+3001 1D		load	max	for(index = 0; index < max; index++)
+6003 1E		sub	index
+E0FF 1F		jumpl	xit
+D0FF 20		jumpe	xit
+3001 21		load	max	form j = max-1
+6005 22		sub	one
+4009 23		store	index2	for(j = max-1; j > index; j--) 
+6003 24		sub	index
+E04A 25		jmpe	iterI
+D04A 26		jmpl	iterI
+3008 27		load	loadit
+5002 28		add	array
+5009 29		add	index2
+6005 2A		sub	one
+402C 2B		store		plant instruction into program
+0000 2C		dw	0
+4007 2D		store	temp	temp = array[index2-1]
+3008 2E		load	loadit
+5002 2F		add	array
+5009 30		add	index2
+4032 31		store		plant instruction into program
+0000 32		dw	0
+400A 33		store	temp2	temp2 = array[index2]
+3007 34		load	temp
+600A 35		sub	temp2
+E045 36		jumpe	iterJ	
+D045 37		jumpl	iterJ
+3006 38		load	storeit swap array[index2] and array[index2-1]
+5002 39		add	array
+5009 3A		add	index2
+403D 3B		store		plant instruction into program
+3007 3C		load	temp
+0000 3D		dw	0	store temp in array[index2]
+3006 3E		load	storeit
+5002 3F		add	array
+5009 40		add	index2
+6005 41		sub	one
+4044 42		store		plant instruction into program
+300A 43		load	temp2
+0000 44		dw	0	array[index2-1] = temp2
+3009 45	iterJ	load	index2	index2--
+6005 46 	sub	one
+4009 47		store	index2
+3009 48		load	index2
+C024 49		jump	second for-loop
+3003 4A iterI	load	index	index++
+5005 4B 	add	one
+4003 4C		store	index
+C01D 4D		jump	first for-loop
+0000 4E	xit	halt
+
+
+
+
+
+
+

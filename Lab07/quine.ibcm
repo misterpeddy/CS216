@@ -1,0 +1,21 @@
+C007 00		jmp 	loop 	skip around the variables
+0000 01	a 	dw 	0 	int[] array
+0015 02	end 	dw 	15	int end
+0000 03	index 	dw 	0 	int index
+0000 04 zero	dw	0	
+0001 05 one	dw	1
+3000 06 loadit	dw	3000
+3002 07 loop	load	end	while(index <= end)
+6003 08 	sub	index
+D014 09		jmpe	xit	else	xit
+3006 0A		load	loadit	form instruction
+5001 0B		add	array
+5003 0C		add	index
+400E 0D		store		plant instruction into program
+0000 0E		dw	0
+1800 0F		printH		print location
+3003 10	iter	load	index	index++
+5005 11		add	one
+4003 12		store	index
+C007 13		jmp	loop	loop over
+0000 14 xit	halt		 

@@ -1,0 +1,32 @@
+C00A 00		jmp 	loop 	skip around the variables
+0000 01	a 	dw 	0 	int a[]
+000B 02	end 	dw 	B	int end
+0000 03	index 	dw 	0 	int index
+0000 04	max 	dw 	0	int max
+0000 05	zero 	dw 	0
+0001 06	one 	dw 	1
+3000 07	loadit 	dw 	3000
+0000 08 temp	dw	0	
+0000 09				leave space for changes
+3002 0A loop 	load 	end 	if (index >= end) goto xit
+6003 0B 	sub 	index
+E01D 0C 	jmpl 	xit
+D01D 0D 	jmpe 	xit
+3007 0E 	load 	loadit 	form a[i]
+5001 0F 	add 	a
+5003 10 	add 	index
+4012 11 	store 	doit 	plant the instruction into the program
+0000 12 doit 	dw 	0
+4008 13 	store 	temp	if(temp <= max) goto iter
+6004 14		sub 	max
+E019 15		jmpl	iter
+D019 16		jmpe	iter
+3008 17		load	temp
+4004 18		store	max
+3003 19 iter 	load 	index 	index += 1
+5006 1A 	add 	one
+4003 1B 	store 	index
+C00A 1C 	jmp 	loop 	goto loop
+3002 1D xit 	load 	s 	print s
+1800 1E 	printH
+0000 1F 	halt

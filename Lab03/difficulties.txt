@@ -1,0 +1,6 @@
+Michael Trotter
+mjt5v
+02/08/08
+difficulties.txt
+
+The only difficulty I had with this lab was the part with the cin.getline and the cat. Otherwise, this lab was fairly easy. 

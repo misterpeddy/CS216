@@ -1,0 +1,17 @@
+l 00000
+s 00001
+t 0001
+a 001
+i 01
+  10
+e 11
+----------------------------------------
+001 001 001 001 001 001 001 001 001 001 11 11 11 11 11 11 11 11 11 11 11 11 11 11 11 01 01 01 01 01 01 01 01 01 01 01 01 00001 00001 00001 0001 0001 0001 0001 10 10 10 10 10 10 10 10 10 10 10 10 10 00000 
+
+----------------------------------------
+There are a total of 58 symbols that are encoded.
+There are 7 distinct symbols used.
+There were 464 bits in the original file.
+There were 146 bits in the compressed file.
+This gives a compression ratio of 3.17808
+The cost of the Huffman tree is 2.51724
